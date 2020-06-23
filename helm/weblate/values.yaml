@@ -1,0 +1,127 @@
+# Default values for weblate.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: weblate/weblate
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart version.
+  tag: "4.1-2"
+
+# Celery worker image
+workerImage:
+  repository: spacekube/webl-celr
+  tag: "5"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# adminEmail -- Email of Admin Account
+adminEmail: "test@test.xyz"
+# adminUser -- Name of Admin Account
+adminUser: "admin"
+# adminPassword -- Password of Admin Account
+adminPassword: "weblateeee"
+
+# emailHost -- Host for sending emails
+emailHost: ""
+# emailUser -- User name for sending emails
+emailUser: ""
+# emailPassword -- Password for sending emails
+emailPassword: ""
+
+# serverEmail -- Sender for outgoing emails
+serverEmail: ""
+# defaultFromEmail -- From email for outgoing emails
+defaultFromEmail: ""
+# allowedHosts -- Hosts that are allowed to connect
+allowedHosts: "*"
+
+# debug -- Enable debugging
+debug: "0"
+
+# extraConfig -- Additional (environment) configs. See https://docs.weblate.org/en/latest/admin/install/docker.html#docker-environment
+extraConfig: {}
+
+# configOverride -- Config override. See https://docs.weblate.org/en/latest/admin/install/docker.html#custom-configuration-files
+configOverride: ""
+
+# RDS configuration
+postgresql:
+  endpoint: ""
+  port: 5432
+  postgresqlUsername: "weblate"
+  postgresqlPassword: "weblatedbpass"
+  postgresqlDatabase: "weblate"
+
+# Redis configuration
+redis:
+  password: "weblate"
+# Django does not support clustered Redis so we have to disable it
+  cluster:
+    enabled: false
+
+# rabbitmq credentials
+rabbitmq-ha:
+  rabbitmqUsername: "weblate"
+  rabbitmqPassword: "weblate"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: NodePort
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

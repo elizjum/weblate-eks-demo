@@ -1,0 +1,21 @@
+# Common AWS attribiutes
+# ------------------------------------------------------------------------------
+
+variable "elizjum_aws_access_key" {
+  default = ""
+}
+
+variable "elizjum_aws_secret_key" {
+  default = ""
+}
+
+terraform {
+  backend "s3" {
+    bucket     = ""
+    key        = ""
+    access_key = ""
+    secret_key = ""
+    region     = var.aws_region
+    dynamodb_table = "terraform-state-lock"
+  }
+}

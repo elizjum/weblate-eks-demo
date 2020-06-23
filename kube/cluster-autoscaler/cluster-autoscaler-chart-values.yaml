@@ -1,0 +1,14 @@
+awsRegion: eu-west-1
+
+rbac:
+  create: true
+  serviceAccountAnnotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::595642362461:role/cluster-autoscaler"
+
+autoDiscovery:
+  clusterName: elizjum-demo
+  enabled: true
+
+image:
+  tag: v1.16.5
+  repository: eu.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler

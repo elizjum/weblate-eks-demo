@@ -1,0 +1,4 @@
+**/.terraform/
+**/logfiles
+**/init.tf
+terraform.tfstate.backup
