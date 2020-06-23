@@ -7,7 +7,7 @@ workers on a AWS EKS cluster.  Based on <https://github.com/WeblateOrg/helm>
 
 ## Major changes
 
-* Chaniging from deployment to statefullset for Weblate. Weblate is a statefull
+* Changing from deployment to statefullset for Weblate. Weblate is a statefull
 app and thus should be handled as an Kubernetes statefullset (<https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/>)
 * Adding an highly available RabbitMQ cluster as the message broker
 * Adding custom Celery docker image that connects to the RabbitMQ cluster
@@ -41,3 +41,8 @@ More on the HPA
 
 * <https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/>
 * <https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/>
+
+## Rolling back Helm releases
+
+To roll back to any previous Helm release of the Weblate deployment use the `helm rollback` functionality
+<https://helm.sh/docs/helm/helm_rollback/>
