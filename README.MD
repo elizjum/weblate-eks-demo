@@ -65,3 +65,12 @@ Please see helm/weblate/README.MD
 ## Usefull scripts
 
 * scripts/destroy-cluster.sh - Destroys every resource in the EKS cluster (usefull for cleanup)
+
+## Further TODO
+
+* Add Amazon EBS CSI driver <https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html>
+* Snapshot of EBS and RDS when deploying
+* Istio <https://istio.io/>
+* Calico <https://www.projectcalico.org/> for more fine grained POD security
+* Separate worker groups
+* More IAM Roles for SErvice Accounts
