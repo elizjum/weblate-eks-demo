@@ -1,4 +1,4 @@
-# space-kube demo
+# weblate-eks-demo
 
 Deploys a simple Kubernetes cluster on the Amazon EKS service along with a Helm Weblate deployment available to the public over an Application Load Balancer.
 
@@ -18,7 +18,7 @@ Deploys a simple Kubernetes cluster on the Amazon EKS service along with a Helm 
 
 ## Structure
 
-* terraform - direcotry with the Terraform code needed to provisition the infrastructure
+* terraform - Terraform code needed to provisition the infrastructure
 * kube - Raw Kubernetes manifests
 * celery-docker - Docker image sources for the Weblate Celery worker
 * helm - Helm chart directory
@@ -38,7 +38,7 @@ Deploys a simple Kubernetes cluster on the Amazon EKS service along with a Helm 
 
 `kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml`
 
-The metrics server is needed cluster wide statistics.
+The metrics server is needed for cluster wide statistics.
 
 ## Deploying cluster autoscaler
 
